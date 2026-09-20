@@ -1,0 +1,94 @@
+PASOS QUE DEBES HACER TÚ PARA TERMINAR Y ENTREGAR
+=================================================
+
+1) DESCOMPRIME EL PROYECTO Y ÁBRELO EN VS CODE.
+
+2) INSTALA DEPENDENCIAS:
+   npm install
+
+3) CREA UN PROYECTO EN SUPABASE.
+
+4) EN SUPABASE > SQL EDITOR:
+   - Abre el archivo supabase/schema.sql del proyecto.
+   - Copia todo su contenido.
+   - Pégalo en SQL Editor.
+   - Presiona Run una sola vez.
+
+5) CREA EL ARCHIVO .env.local EN LA RAÍZ.
+   Puedes copiar .env.example y colocar tus datos:
+
+   NEXT_PUBLIC_SUPABASE_URL=https://TU-PROYECTO.supabase.co
+   NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=TU_PUBLISHABLE_KEY
+   NEXT_PUBLIC_SITE_URL=http://localhost:3000
+
+6) CONFIGURA SUPABASE > AUTHENTICATION > URL CONFIGURATION:
+   Site URL (mientras pruebas):
+   http://localhost:3000
+
+   Redirect URLs:
+   http://localhost:3000/**
+
+7) CONFIGURA LAS PLANTILLAS DE CORREO EN SUPABASE.
+
+   Confirm signup:
+   <a href="{{ .RedirectTo }}/auth/confirm?token_hash={{ .TokenHash }}&type=email&next=/dashboard">Confirmar correo</a>
+
+   Reset password:
+   <a href="{{ .RedirectTo }}/auth/confirm?token_hash={{ .TokenHash }}&type=recovery&next=/update-password">Restablecer contraseña</a>
+
+8) EJECUTA LOCALMENTE:
+   npm run dev
+
+9) PRUEBA TODO:
+   - Registro
+   - Confirmación de correo
+   - Login
+   - Dashboard
+   - Logout
+   - Recuperación de contraseña
+   - Cambio de contraseña
+
+10) VERIFICA CALIDAD ANTES DE SUBIR:
+    npm run lint
+    npm run build
+
+11) CREA UN REPOSITORIO PÚBLICO EN GITHUB.
+    Nombre sugerido:
+    secure-next-supabase-auth
+
+12) SUBE EL PROYECTO:
+    git init
+    git add .
+    git commit -m "feat: secure authentication with Supabase"
+    git branch -M main
+    git remote add origin URL_DE_TU_REPOSITORIO
+    git push -u origin main
+
+13) IMPORTA EL REPOSITORIO EN VERCEL.
+
+14) EN VERCEL AGREGA ESTAS VARIABLES DE ENTORNO:
+    NEXT_PUBLIC_SUPABASE_URL
+    NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY
+    NEXT_PUBLIC_SITE_URL
+
+    En NEXT_PUBLIC_SITE_URL coloca la URL definitiva de Vercel.
+
+15) DESPUÉS DEL PRIMER DEPLOY, VUELVE A SUPABASE:
+    - Cambia Site URL por la URL de Vercel.
+    - Agrega también:
+      https://TU-PROYECTO.vercel.app/**
+      en Redirect URLs.
+
+16) HAZ UN REDEPLOY EN VERCEL SI CAMBIASTE VARIABLES.
+
+17) PRUEBA TODO OTRA VEZ EN PRODUCCIÓN.
+
+18) PARA ENTREGAR NECESITAS:
+    - URL pública del repositorio GitHub
+    - URL pública del proyecto en Vercel
+    - README.md ya incluido en el proyecto
+
+NOTA SOBRE NEXT.JS 16
+---------------------
+Next.js 16 renombró middleware.ts a proxy.ts. El archivo proxy.ts de este
+proyecto es la capa de middleware que refresca la sesión y protege las rutas.

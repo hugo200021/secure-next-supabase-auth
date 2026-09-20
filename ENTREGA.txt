@@ -1,0 +1,35 @@
+ENTREGA DE PROYECTO - SEGURIDAD Y SEO CON NEXT.JS + SUPABASE
+============================================================
+
+Proyecto: SecureWeb
+
+Repositorio GitHub:
+PEGAR_AQUI_URL_DE_GITHUB
+
+Aplicación desplegada:
+PEGAR_AQUI_URL_DE_VERCEL
+
+Tecnologías utilizadas:
+- Next.js 16 con App Router
+- TypeScript
+- Supabase Authentication + Database
+- @supabase/ssr
+- Server Actions
+- Proxy/Middleware para protección de rutas
+- Cookies httpOnly
+- Zod para validación en servidor
+
+Funcionalidades principales:
+- Registro, inicio y cierre de sesión
+- Verificación de correo
+- Recuperación y actualización de contraseña
+- Dashboard protegido
+- Refresco automático de sesión
+- Protección XSS y CSRF
+- Variables de entorno
+- Row Level Security (RLS)
+- Metadata SEO, canonical, Open Graph, JSON-LD, robots.txt y sitemap.xml
+
+Observación:
+En Next.js 16, middleware.ts fue renombrado oficialmente a proxy.ts. El proyecto
+usa proxy.ts para la protección y actualización de sesiones.
